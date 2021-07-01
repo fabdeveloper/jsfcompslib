@@ -24,6 +24,26 @@
 		    <version>8.0</version>
 		    <scope>provided</scope>
 		</dependency>
+		
+<dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>jstl</artifactId>
+    <version>1.2</version>
+</dependency>
+
+
+<!-- https://mvnrepository.com/artifact/org.primefaces/primefaces -->
+<dependency>
+    <groupId>org.primefaces</groupId>
+    <artifactId>primefaces</artifactId>
+    <version>8.0</version>
+</dependency>
+		
+			<dependency>
+  		<groupId>JEE7</groupId>
+  		<artifactId>RS3Utility</artifactId>  		
+  		<version>0</version>  		
+  	</dependency>
 
   </dependencies>
   
@@ -31,7 +51,7 @@
   
   
   <build>
-   <finalName>EShopJSFCompsLib</finalName>
+   <finalName>JSFCompsLib</finalName>
   
     <sourceDirectory>src</sourceDirectory>
     <resources>
@@ -42,14 +62,20 @@
         </excludes>
       </resource>
     </resources>
+    
     <plugins>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.1</version>
-        <configuration>
-          <release>15</release>
-        </configuration>
-      </plugin>
+    
+	      <plugin>
+	        <artifactId>maven-compiler-plugin</artifactId>
+	        <version>3.8.1</version>
+	      </plugin>
+	      
+	      <plugin>
+	        <groupId>org.apache.maven.plugins</groupId>
+	        <artifactId>maven-install-plugin</artifactId>
+	        <version>3.0.0-M1</version>      
+	      </plugin>
+      
     </plugins>
   </build>
 </project>
