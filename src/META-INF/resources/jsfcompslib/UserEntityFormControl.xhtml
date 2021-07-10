@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsf/core"	 		
+	xmlns:composite="http://java.sun.com/jsf/composite">
+	
+	
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+</head>
+<p:body>
+	<composite:interface>
+		<composite:attribute name="labelId" default="Id"></composite:attribute>
+		<composite:attribute name="labelNick" default="Nick"></composite:attribute>
+		<composite:attribute name="labelName" default="Name"></composite:attribute>
+		<composite:attribute name="labelAddress" default="Address"></composite:attribute>
+		<composite:attribute name="labelEmail" default="Email"></composite:attribute>
+		<composite:attribute name="labelTelephone" default="Telephone"></composite:attribute>
+		<composite:attribute name="labelPassword" default="Password"></composite:attribute>
+		
+		<composite:attribute name="buttontextId" default="Search by Id"></composite:attribute>
+		<composite:attribute name="buttontextNick" default="Search by Nick"></composite:attribute>
+		<composite:attribute name="buttontextName" default="Switch updatable"></composite:attribute>
+		<composite:attribute name="buttontextAddress" default="Switch updatable"></composite:attribute>
+		<composite:attribute name="buttontextEmail" default="Switch updatable"></composite:attribute>
+		<composite:attribute name="buttontextTelephone" default="Switch updatable"></composite:attribute>
+		<composite:attribute name="buttontextPassword" default="Switch updatable"></composite:attribute>	
+		
+		
+		
+		<composite:attribute name="user" type="src.entity.User" required="true"></composite:attribute>		
+		<composite:attribute name="bean" type="src.jsfcompslib.util.interfaces.IProcessable" required="true"></composite:attribute>
+		
+				
+		<composite:attribute name="actionSearchById" method-signature="java.lang.String actionSearchById()" required="true"></composite:attribute>		
+		<composite:attribute name="actionSearchByNick" method-signature="java.lang.String actionSearchByNick()" required="true"></composite:attribute>	
+			
+			
+		<composite:attribute name="buttonClass" default="buttonClass"></composite:attribute>	
+		<composite:attribute name="inputTextClass" default="inputTextClass"></composite:attribute>	
+		<composite:attribute name="textClass" default="textClass"></composite:attribute>	
+				<composite:attribute name="divClass" default="divClass"></composite:attribute>	
+		
+
+		
+	</composite:interface>
+	
+	<composite:implementation>
+	<div class="cc.attrs.divClass">	
+		<p:form>
+		<p:panelGrid columns="2">
+		
+		<p:outputText styleClass="cc.attrs.textClass" value="#{cc.attrs.labelId}"></p:outputText>
+		<p:inputText styleClass="cc.attrs.inputTextClass" value="#{cc.attrs.user.id}" ></p:inputText>
+		
+		<p:outputText styleClass="cc.attrs.textClass" value="#{cc.attrs.labelNick}"></p:outputText>
+		<p:inputText styleClass="#{cc.attrs.inputtextclass}" value="#{cc.attrs.user.nick}" ></p:inputText>	
+				
+		<p:outputText styleClass="cc.attrs.textClass" value="#{cc.attrs.labelName}"></p:outputText>
+		<p:inputText styleClass="#{cc.attrs.inputtextclass}" value="#{cc.attrs.user.name}"></p:inputText>
+				
+		<p:outputText styleClass="cc.attrs.textClass" value="#{cc.attrs.labelAddress}"></p:outputText>
+		<p:inputText styleClass="#{cc.attrs.inputtextclass}" value="#{cc.attrs.user.address}"></p:inputText>
+				
+		<p:outputText styleClass="cc.attrs.textClass" value="#{cc.attrs.labelEmail}"></p:outputText>
+		<p:inputText styleClass="#{cc.attrs.inputtextclass}" value="#{cc.attrs.user.email}"></p:inputText>
+				
+		<p:outputText styleClass="cc.attrs.textClass" value="#{cc.attrs.labelTelephone}"></p:outputText>
+		<p:inputText styleClass="#{cc.attrs.inputtextclass}" value="#{cc.attrs.user.telephone}"></p:inputText>
+				
+		<p:outputText styleClass="cc.attrs.textClass" value="#{cc.attrs.labelPassword}"></p:outputText>
+		<p:inputText styleClass="#{cc.attrs.inputtextclass}" value="#{cc.attrs.user.password}"></p:inputText>
+				<p:commandButton styleClass="#{cc.attrs.buttonclass}" value="#{cc.attrs.buttontextId}" action="#{cc.attrs.actionSearchById}"></p:commandButton>
+				<p:commandButton styleClass="#{cc.attrs.buttonclass}" value="#{cc.attrs.buttontextNick}" action="#{cc.attrs.actionSearchByNick}"></p:commandButton>
+		
+		</p:panelGrid>
+	</p:form>
+	</div>
+	</composite:implementation>
+
+
+
+
+
+</p:body>
+</html>

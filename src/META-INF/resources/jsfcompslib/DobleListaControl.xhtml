@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsf/core"	 		
+	xmlns:composite="http://java.sun.com/jsf/composite">
+	
+	
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+</head>
+<p:body>
+	<composite:interface>
+		<composite:attribute name="textbuttonAdd" default="Add"></composite:attribute>
+		<composite:attribute name="textbuttonRemove" default="Remove"></composite:attribute>
+		
+		<composite:attribute name="itemseleccionadoLista1"></composite:attribute>	
+		<composite:attribute name="itemseleccionadoLista2"></composite:attribute>		
+			
+		<composite:attribute name="bean" type="src.jsfcompslib.util.interfaces.IProcessable"></composite:attribute>
+		<composite:attribute name="listaItems1" type="java.util.List"></composite:attribute>
+		<composite:attribute name="listaItems2" type="java.util.List"></composite:attribute>
+		
+				<composite:attribute name="listboxClass" default="listBoxClass"></composite:attribute>
+				<composite:attribute name="buttonClass" default="buttonClass"></composite:attribute>
+				<composite:attribute name="divClass" default="divClass"></composite:attribute>
+				
+				
+		
+		
+
+	</composite:interface>
+	
+	<composite:implementation>
+	
+	<div class="divClass" style="width:100%; height:100%; text-align:center;">
+		<p:form>
+		
+			<p:panelGrid columns="2">
+		
+				<p:selectOneListbox styleClass="cc.attrs.listboxClass" value="#{cc.attrs.itemseleccionadoLista1}">
+					<c:selectItems value="#{cc.attrs.listaItems1}"></c:selectItems>			
+				</p:selectOneListbox>
+				
+	
+				<p:selectOneListbox styleClass="cc.attrs.listboxClass" value="#{cc.attrs.itemseleccionadoLista2}">
+						<c:selectItems value="#{cc.attrs.listaItems2}"></c:selectItems>
+				</p:selectOneListbox>
+				
+				<p:commandButton styleClass="cc.attrs.buttonClass" value="#{cc.attrs.textbuttonAdd}" action="#{cc.attrs.bean.process1()}"></p:commandButton>
+				<p:commandButton styleClass="cc.attrs.buttonClass" value="#{cc.attrs.textbuttonRemove}" action="#{cc.attrs.bean.process2()}"></p:commandButton>
+			
+			</p:panelGrid>
+		
+		</p:form>
+	</div>
+	</composite:implementation>
+
+
+
+
+
+</p:body>
+</html>

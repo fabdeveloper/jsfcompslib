@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsf/core"	 		
+	xmlns:composite="http://java.sun.com/jsf/composite">
+	
+	
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+</head>
+<p:body>
+	<composite:interface>
+		<composite:attribute name="textbutton"></composite:attribute>
+		<composite:attribute name="itemseleccionado" type="src.entity.DeliveryDetailsStatusType"></composite:attribute>		
+		<composite:attribute name="bean" type="src.jsfcompslib.util.interfaces.IProcessable"></composite:attribute>
+		<composite:attribute name="listaItems" type="java.util.List"></composite:attribute>
+		<composite:attribute name="remarks"></composite:attribute>
+		
+
+	</composite:interface>
+	
+	<composite:implementation>
+		<p:form>
+		<p:selectOneMenu value="#{cc.attrs.itemseleccionado}">
+				<c:selectItems value="#{cc.attrs.listaItems}"></c:selectItems>
+		</p:selectOneMenu><br/>
+		<p:inputTextarea value="#{cc.attrs.remarks}"></p:inputTextarea><br/>
+		<p:commandButton value="#{cc.attrs.textbutton}" action="#{cc.attrs.bean.process()}"></p:commandButton><br/>
+	</p:form>
+	
+	</composite:implementation>
+
+
+
+
+
+</p:body>
+</html>

@@ -21,5 +21,9 @@ public interface IProcessable {
 	public default String process3(){
 		return null;
 	}
+	
+	public default String process4(){
+		return null;
+	}
 
 }
