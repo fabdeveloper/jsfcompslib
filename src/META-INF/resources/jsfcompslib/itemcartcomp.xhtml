@@ -24,6 +24,10 @@
 		
 		<composite:attribute name="divclass" default="divclass"></composite:attribute>
 		<composite:attribute name="botonclass" default="botonclass"></composite:attribute>
+		<composite:attribute name="inputclass" default="inputclass"></composite:attribute>
+		<composite:attribute name="update" default="@all"></composite:attribute>
+		
+		
 		
 		<composite:attribute name="bean" type="src.jsfcompslib.util.interfaces.IProcessable"></composite:attribute>
 		
@@ -41,9 +45,9 @@
 			<p:outputText value="#{cc.attrs.texto2}"></p:outputText><br/>
 			<p:outputText value="#{cc.attrs.texto3}"></p:outputText><br/>
 			<p:outputText value="#{cc.attrs.texto4}"></p:outputText><br/><p:form>
-			<ui:selectOneMenu id="selectonemenu" value="#{cc.attrs.numItems}"  >
+			<ui:selectOneMenu styleClass="#{cc.attrs.inputclass}" id="selectonemenu" value="#{cc.attrs.numItems}"  >
 				<c:selectItems value="#{cc.attrs.listaItems}"></c:selectItems>
-				<ui:ajax event="itemSelect" process="@all" update="@all" listener="#{cc.attrs.bean.modifItem(cc.attrs.iditem, cc.attrs.numItems)}"/>		
+				<ui:ajax event="itemSelect" process="@all" update="#{cc.attrs.update}" listener="#{cc.attrs.bean.modifItem(cc.attrs.iditem, cc.attrs.numItems)}"/>		
 			</ui:selectOneMenu>
 				</p:form>
 			<p:form id="formitemcart">

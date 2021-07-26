@@ -6,6 +6,10 @@ public interface IProcessable {
 		return null;
 	}
 	
+	public default Boolean bProcess() {
+		return null;
+	}
+	
 	public default String process(){
 		return null;
 	}

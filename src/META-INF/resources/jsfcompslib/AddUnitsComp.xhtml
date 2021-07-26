@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsf/core"	 	
+	xmlns:ui="http://primefaces.org/ui"
+	xmlns:composite="http://java.sun.com/jsf/composite">
+
+
+<p:body>
+	<composite:interface>
+		<composite:attribute name="texto1"></composite:attribute>
+		<composite:attribute name="texto2"></composite:attribute>
+		<composite:attribute name="texto3"></composite:attribute>
+		<composite:attribute name="texto4"></composite:attribute>
+		<composite:attribute name="textoboton" default="Add to cart"></composite:attribute>
+		<composite:attribute name="numItems" ></composite:attribute>
+		<composite:attribute name="listaItems"></composite:attribute>	
+		<composite:attribute name="textoetiquetadesplegable" default="Num items: "></composite:attribute>			
+		<composite:attribute name="loginadvicetext" default="login para continuar"></composite:attribute>			
+		
+		
+		
+		<composite:attribute name="divclass" default="divclass"></composite:attribute>
+		<composite:attribute name="botonclass" default="botonclass"></composite:attribute>
+		
+		<!--  IProcessable.process() = addToCart() -->
+		<!--  IProcessable.bProcess() = isClient() -->
+		<!--  IProcessable.process2() = valuate() -->		
+		<composite:attribute name="bean" type="src.jsfcompslib.util.interfaces.IProcessable"></composite:attribute>		
+		
+		<composite:clientBehavior name="itemSelect" event="itemSelect" target="selectonemenu" ></composite:clientBehavior>
+<!-- 		<composite:clientBehavior name="actioneventitemcartcomp" event="action" target="formitemcart"></composite:clientBehavior> -->
+
+	</composite:interface>
+	
+	
+	<composite:implementation>
+	
+		<div class="#{cc.attrs.divclass}" >
+			<p:panelGrid columns="1">
+
+			
+			<p:form>
+				<p:outputText rendered="#{!cc.attrs.bean.bProcess()}" value="#{cc.attrs.loginadvicetext}"></p:outputText>			
+				<p:commandButton  rendered="#{cc.attrs.bean.bProcess()}" class="#{cc.attrs.botonclass}" id="botonaddtocart" value="#{cc.attrs.textoboton}" action="#{cc.attrs.bean.process()}"></p:commandButton>
+			</p:form>
+			<br/><br/>
+			
+			<p:form >
+				<p:outputLabel value="#{cc.attrs.textoetiquetadesplegable}"></p:outputLabel>
+				
+				<ui:selectOneMenu id="selectonemenu" value="#{cc.attrs.numItems}">
+					<c:selectItems value="#{cc.attrs.listaItems}"></c:selectItems>
+					<ui:ajax event="itemSelect" process="@all" update="@all" listener="#{cc.attrs.bean.process2()}"/>		
+				</ui:selectOneMenu>
+				
+			</p:form>
+			
+<br/>
+
+			<p:outputText value="#{cc.attrs.texto1}"></p:outputText>
+			<p:outputText value="#{cc.attrs.texto2}"></p:outputText>
+			<p:outputText value="#{cc.attrs.texto3}"></p:outputText>
+			<p:outputText value="#{cc.attrs.texto4}"></p:outputText>
+			
+			</p:panelGrid>
+		</div>
+	</composite:implementation>
+	
+
+</p:body>
+</html>
