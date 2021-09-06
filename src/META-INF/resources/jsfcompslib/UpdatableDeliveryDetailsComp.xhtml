@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:c="http://java.sun.com/jsf/core"
+	xmlns:ui="http://primefaces.org/ui"
+	xmlns:p="http://java.sun.com/jsf/html">
+
+<p:body>
+	<composite:interface>
+		<composite:attribute name="addresslabel" default="Shipping Address: "></composite:attribute>
+		<composite:attribute name="address"></composite:attribute>
+		<composite:attribute name="addressdisabled" type="java.lang.Boolean" default="false"></composite:attribute>
+		
+		<composite:attribute name="remarkslabel" default="Remarks: "></composite:attribute>
+		<composite:attribute name="remarks"></composite:attribute>
+		<composite:attribute name="remarksrendered" type="java.lang.Boolean" default="true"></composite:attribute>
+		<composite:attribute name="remarksdisabled" type="java.lang.Boolean" default="false"></composite:attribute>
+
+		<composite:attribute name="deliverytypedisabled" type="java.lang.Boolean" default="false"></composite:attribute>
+		<composite:attribute name="typelabel" default="Shipping Type: "></composite:attribute>
+		<composite:attribute name="typeselected"></composite:attribute>
+		<composite:attribute name="listaDeliveryTypes" type="java.util.List"></composite:attribute>
+				
+		<composite:attribute name="deliverystatusdisabled" type="java.lang.Boolean" default="false"></composite:attribute>
+		<composite:attribute name="statuslabel" default="Shipping Status: "></composite:attribute>
+		<composite:attribute name="statusselected"></composite:attribute>
+		<composite:attribute name="listaDeliveryStatusTypes" type="java.util.List"></composite:attribute>
+
+		<composite:attribute name="lastModificationDateLabel" default="Last Modification: "></composite:attribute>
+		<composite:attribute name="lastModificationDate" type="java.util.Date"></composite:attribute>
+		<composite:attribute name="lastModificationDateDisabled" type="java.lang.Boolean" default="false"></composite:attribute>		
+		<composite:attribute name="lastModificationDateRendered" type="java.lang.Boolean" default="true"></composite:attribute>
+		
+		<composite:attribute name="menuEventListener" method-signature="java.lang.String menuEventListener()"></composite:attribute>
+		
+		<composite:attribute name="buttonclass" default="botonclass"></composite:attribute>
+		<composite:attribute name="inputtextclass" default="inputclass"></composite:attribute>
+		<composite:attribute name="buttontext" default="Update"></composite:attribute>
+		<composite:attribute name="updateDeliveryInfo" method-signature="java.lang.String updateDeliveryInfo()"></composite:attribute>
+
+	</composite:interface>
+	<composite:implementation>
+
+		<p:form id="formulario">
+			<p:outputText value="#{cc.attrs.addresslabel}"></p:outputText>
+			<br />
+			<p:inputTextarea class="#{cc.attrs.inputtextclass}" 
+				value="#{cc.attrs.address}" disabled="#{cc.attrs.addressdisabled}"></p:inputTextarea>
+			<br />
+			<p:outputText value="#{cc.attrs.remarkslabel}"
+				rendered="#{cc.attrs.remarksrendered}"></p:outputText>
+			<br />
+			<p:inputTextarea class="#{cc.attrs.inputtextclass}"
+				value="#{cc.attrs.remarks}" rendered="#{cc.attrs.remarksrendered}" disabled="#{cc.attrs.remarksdisabled}"></p:inputTextarea>
+			<br />
+
+			<p:outputText value="#{cc.attrs.typelabel}"></p:outputText>
+			<br />
+
+			<ui:selectOneMenu  value="#{cc.attrs.typeselected}" disabled="#{cc.attrs.deliverytypedisabled}">
+				<c:selectItems value="#{cc.attrs.listaDeliveryTypes}" ></c:selectItems>
+				<ui:ajax event="itemSelect" process="@this" update="@this"
+					listener="#{cc.attrs.menuEventListener}" />
+			</ui:selectOneMenu>
+			<br />			
+			
+			<p:outputText value="#{cc.attrs.statuslabel}"></p:outputText>
+			<br />
+			<ui:selectOneMenu  value="#{cc.attrs.statusselected}" disabled="#{cc.attrs.deliverystatusdisabled}">
+				<c:selectItems value="#{cc.attrs.listaDeliveryStatusTypes}" ></c:selectItems>
+				<ui:ajax event="itemSelect" process="@this" update="@this"
+					listener="#{cc.attrs.menuEventListener}" />
+			</ui:selectOneMenu>
+			<br />
+			
+			<p:outputText value="#{cc.attrs.lastModificationDateLabel}"
+				rendered="#{cc.attrs.lastModificationDateRendered}"></p:outputText>
+			<br />
+			<p:inputText class="#{cc.attrs.inputtextclass}"
+				value="#{cc.attrs.lastModificationDate}" disabled="#{cc.attrs.lastModificationDateDisabled}" rendered="#{cc.attrs.lastModificationDateRendered}"></p:inputText>
+			<br />
+			
+			
+			<p:commandButton class="#{cc.attrs.buttonclass}"
+				value="#{cc.attrs.buttontext}" action="#{cc.attrs.updateDeliveryInfo}"></p:commandButton>
+			<br />
+
+		</p:form>
+		
+	</composite:implementation>
+</p:body>
+
+</html>
+
+
+
+<!-- 
+
+<comp:UpdatableDeliveryDetailsComp
+addresslabel=""
+address=""
+addressdisabled=""
+remarkslabel=""
+remarks=""
+remarksrendered=""
+remarksdisabled=""
+deliverytypedisabled=""
+typelabel=""
+typeselected=""
+listaDeliveryTypes=""
+deliverystatusdisabled=""
+statuslabel=""
+statusselected=""
+listaDeliveryStatusTypes=""
+lastModificationDateLabel=""
+lastModificationDate=""
+lastModificationDateDisabled=""
+lastModificationDateRendered=""
+menuEventListener=""
+buttonclass=""
+inputtextclass=""
+buttontext=""
+updateDeliveryInfo=""
+></comp:UpdatableDeliveryDetailsComp>
+
+
+
+<comps:UpdatableDeliveryDetailsComp
+address=""
+remarks=""
+remarksrendered=""
+deliverytypedisabled=""
+typeselected=""
+listaDeliveryTypes=""
+deliverystatusdisabled=""
+statusselected=""
+listaDeliveryStatusTypes=""
+lastModificationDate=""
+menuEventListener=""
+updateDeliveryInfo=""
+></comps:UpdatableDeliveryDetailsComp>
+
+ -->

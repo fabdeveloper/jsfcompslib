@@ -5,4 +5,5 @@
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd">
   <namespace>http://jsfcompslib.src/taglib</namespace>
   <composite-library-name>jsfcompslib</composite-library-name>
+  
 </facelet-taglib>

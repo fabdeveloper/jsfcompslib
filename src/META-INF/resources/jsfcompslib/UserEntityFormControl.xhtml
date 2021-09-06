@@ -52,26 +52,27 @@
 		<p:panelGrid columns="2">
 		
 		<p:outputText styleClass="cc.attrs.textClass" value="#{cc.attrs.labelId}"></p:outputText>
-		<p:inputText styleClass="cc.attrs.inputTextClass" value="#{cc.attrs.user.id}" ></p:inputText>
+		<p:inputText styleClass="cc.attrs.inputTextClass" value="#{cc.attrs.bean.user.id}" ></p:inputText>
 		
 		<p:outputText styleClass="cc.attrs.textClass" value="#{cc.attrs.labelNick}"></p:outputText>
-		<p:inputText styleClass="#{cc.attrs.inputtextclass}" value="#{cc.attrs.user.nick}" ></p:inputText>	
+		<p:inputText styleClass="#{cc.attrs.inputtextclass}" value="#{cc.attrs.bean.user.nick}"></p:inputText>	
 				
 		<p:outputText styleClass="cc.attrs.textClass" value="#{cc.attrs.labelName}"></p:outputText>
-		<p:inputText styleClass="#{cc.attrs.inputtextclass}" value="#{cc.attrs.user.name}"></p:inputText>
+		<p:inputText styleClass="#{cc.attrs.inputtextclass}" value="#{cc.attrs.bean.user.name}"></p:inputText>
 				
 		<p:outputText styleClass="cc.attrs.textClass" value="#{cc.attrs.labelAddress}"></p:outputText>
-		<p:inputText styleClass="#{cc.attrs.inputtextclass}" value="#{cc.attrs.user.address}"></p:inputText>
+		<p:inputText styleClass="#{cc.attrs.inputtextclass}" value="#{cc.attrs.bean.user.address}"></p:inputText>
 				
 		<p:outputText styleClass="cc.attrs.textClass" value="#{cc.attrs.labelEmail}"></p:outputText>
-		<p:inputText styleClass="#{cc.attrs.inputtextclass}" value="#{cc.attrs.user.email}"></p:inputText>
+		<p:inputText styleClass="#{cc.attrs.inputtextclass}" value="#{cc.attrs.bean.user.email}"></p:inputText>
 				
 		<p:outputText styleClass="cc.attrs.textClass" value="#{cc.attrs.labelTelephone}"></p:outputText>
-		<p:inputText styleClass="#{cc.attrs.inputtextclass}" value="#{cc.attrs.user.telephone}"></p:inputText>
+		<p:inputText styleClass="#{cc.attrs.inputtextclass}" value="#{cc.attrs.bean.user.telephone}"></p:inputText>
 				
 		<p:outputText styleClass="cc.attrs.textClass" value="#{cc.attrs.labelPassword}"></p:outputText>
-		<p:inputText styleClass="#{cc.attrs.inputtextclass}" value="#{cc.attrs.user.password}"></p:inputText>
-				<p:commandButton styleClass="#{cc.attrs.buttonclass}" value="#{cc.attrs.buttontextId}" action="#{cc.attrs.actionSearchById}"></p:commandButton>
+		<p:inputText styleClass="#{cc.attrs.inputtextclass}" value="#{cc.attrs.bean.user.password}"></p:inputText>
+		
+				<p:commandButton styleClass="#{cc.attrs.buttonclass}" value="#{cc.attrs.buttontextId}" action="#{cc.attrs.actionSearchById}" ></p:commandButton>
 				<p:commandButton styleClass="#{cc.attrs.buttonclass}" value="#{cc.attrs.buttontextNick}" action="#{cc.attrs.actionSearchByNick}"></p:commandButton>
 		
 		</p:panelGrid>

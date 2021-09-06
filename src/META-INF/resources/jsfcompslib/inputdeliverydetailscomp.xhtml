@@ -6,7 +6,6 @@
 
 <p:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>Insert title here</title>
 </p:head>
 
 
@@ -33,7 +32,8 @@
 		<composite:attribute name="texto3"></composite:attribute>
 		<composite:attribute  name="buttonclass"></composite:attribute>
 		<composite:attribute  name="inputtextclass"></composite:attribute>
-				<composite:attribute  name="bean" type="src.jsfcompslib.util.interfaces.IProcessable"></composite:attribute>
+		<composite:attribute  name="buttontext" default="actualizar datos de envio"></composite:attribute>		
+		<composite:attribute  name="bean" type="src.jsfcompslib.util.interfaces.IProcessable"></composite:attribute>
 		
 
 	</composite:interface>
@@ -47,7 +47,7 @@
 			
 			<p:outputText value="#{cc.attrs.titulotexto3}"></p:outputText><br/>
 			<p:inputText class="#{cc.attrs.inputtextclass}" id="it_seleccion" value="#{cc.attrs.texto3}"></p:inputText><br/>
-			<p:commandButton class="#{cc.attrs.buttonclass}" value="actualizar datos de envio" action="#{cc.attrs.bean.process()}"></p:commandButton><br/>
+			<p:commandButton class="#{cc.attrs.buttonclass}" value="#{cc.attrs.buttontext}" action="#{cc.attrs.bean.process()}"></p:commandButton><br/>
 
 
 		</p:form>

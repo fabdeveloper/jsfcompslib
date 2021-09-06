@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:composite="http://java.sun.com/jsf/composite"
+xmlns:c="http://java.sun.com/jsf/core"
+xmlns:ui="http://primefaces.org/ui"
+xmlns:p="http://java.sun.com/jsf/html">
+
+<p:body>
+	<composite:interface>
+<composite:attribute name="commandButtonClass" default="commandButtonClass"></composite:attribute>
+<composite:attribute name="ShopLabel" default="ShopLabel"></composite:attribute>
+<composite:attribute name="ShopField" method-signature="java.lang.String ShopField()"></composite:attribute>
+<composite:attribute name="ShopRendered" type="java.lang.Boolean" default="true"></composite:attribute>
+<composite:attribute name="ShopDisabled" type="java.lang.Boolean" default="false"></composite:attribute>
+<composite:attribute name="LoadProductLabel" default="LoadProductLabel"></composite:attribute>
+<composite:attribute name="LoadProductField" method-signature="java.lang.String LoadProductField()"></composite:attribute>
+<composite:attribute name="LoadProductRendered" type="java.lang.Boolean" default="true"></composite:attribute>
+<composite:attribute name="LoadProductDisabled" type="java.lang.Boolean" default="false"></composite:attribute>
+<composite:attribute name="ShipmentsLabel" default="ShipmentsLabel"></composite:attribute>
+<composite:attribute name="ShipmentsField" method-signature="java.lang.String ShipmentsField()"></composite:attribute>
+<composite:attribute name="ShipmentsRendered" type="java.lang.Boolean" default="true"></composite:attribute>
+<composite:attribute name="ShipmentsDisabled" type="java.lang.Boolean" default="false"></composite:attribute>
+<composite:attribute name="MaintenanceTasksLabel" default="MaintenanceTasksLabel"></composite:attribute>
+<composite:attribute name="MaintenanceTasksField" method-signature="java.lang.String MaintenanceTasksField()"></composite:attribute>
+<composite:attribute name="MaintenanceTasksRendered" type="java.lang.Boolean" default="true"></composite:attribute>
+<composite:attribute name="MaintenanceTasksDisabled" type="java.lang.Boolean" default="false"></composite:attribute>
+<composite:attribute name="ReportsLabel" default="ReportsLabel"></composite:attribute>
+<composite:attribute name="ReportsField" method-signature="java.lang.String ReportsField()"></composite:attribute>
+<composite:attribute name="ReportsRendered" type="java.lang.Boolean" default="true"></composite:attribute>
+<composite:attribute name="ReportsDisabled" type="java.lang.Boolean" default="false"></composite:attribute>
+<composite:attribute name="UsersAndRolesLabel" default="UsersAndRolesLabel"></composite:attribute>
+<composite:attribute name="UsersAndRolesField" method-signature="java.lang.String UsersAndRolesField()"></composite:attribute>
+<composite:attribute name="UsersAndRolesRendered" type="java.lang.Boolean" default="true"></composite:attribute>
+<composite:attribute name="UsersAndRolesDisabled" type="java.lang.Boolean" default="false"></composite:attribute>
+	</composite:interface>
+		<composite:implementation>
+<p:form >
+			<p:panelGrid border="1" columns="2">
+
+			<p:commandButton class="#{cc.attrs.commandButtonClass}" value="#{cc.attrs.ShopLabel}" action="#{cc.attrs.ShopField}" disabled="#{cc.attrs.ShopDisabled}" rendered="#{cc.attrs.ShopRendered}"></p:commandButton>
+<p:commandButton class="#{cc.attrs.commandButtonClass}" value="#{cc.attrs.LoadProductLabel}" action="#{cc.attrs.LoadProductField}" disabled="#{cc.attrs.LoadProductDisabled}" rendered="#{cc.attrs.LoadProductRendered}"></p:commandButton>
+<p:commandButton class="#{cc.attrs.commandButtonClass}" value="#{cc.attrs.ShipmentsLabel}" action="#{cc.attrs.ShipmentsField}" disabled="#{cc.attrs.ShipmentsDisabled}" rendered="#{cc.attrs.ShipmentsRendered}"></p:commandButton>
+<p:commandButton class="#{cc.attrs.commandButtonClass}" value="#{cc.attrs.MaintenanceTasksLabel}" action="#{cc.attrs.MaintenanceTasksField}" disabled="#{cc.attrs.MaintenanceTasksDisabled}" rendered="#{cc.attrs.MaintenanceTasksRendered}"></p:commandButton>
+<p:commandButton class="#{cc.attrs.commandButtonClass}" value="#{cc.attrs.ReportsLabel}" action="#{cc.attrs.ReportsField}" disabled="#{cc.attrs.ReportsDisabled}" rendered="#{cc.attrs.ReportsRendered}"></p:commandButton>
+<p:commandButton class="#{cc.attrs.commandButtonClass}" value="#{cc.attrs.UsersAndRolesLabel}" action="#{cc.attrs.UsersAndRolesField}" disabled="#{cc.attrs.UsersAndRolesDisabled}" rendered="#{cc.attrs.UsersAndRolesRendered}"></p:commandButton>
+			</p:panelGrid>
+
+
+</p:form>
+	</composite:implementation>
+</p:body>
+</html>
+<!-- 
+commandButtonClass=""
+ShopLabel=""
+ShopField=""
+ShopDisabled=""
+ShopRendered=""
+LoadProductLabel=""
+LoadProductField=""
+LoadProductDisabled=""
+LoadProductRendered=""
+ShipmentsLabel=""
+ShipmentsField=""
+ShipmentsDisabled=""
+ShipmentsRendered=""
+MaintenanceTasksLabel=""
+MaintenanceTasksField=""
+MaintenanceTasksDisabled=""
+MaintenanceTasksRendered=""
+ReportsLabel=""
+ReportsField=""
+ReportsDisabled=""
+ReportsRendered=""
+UsersAndRolesLabel=""
+UsersAndRolesField=""
+UsersAndRolesDisabled=""
+UsersAndRolesRendered=""
+ -->

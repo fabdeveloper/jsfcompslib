@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://java.sun.com/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:composite="http://java.sun.com/jsf/composite">
+
+
+
+
+<body>
+
+	<composite:interface>
+
+		<composite:attribute name="user_id"></composite:attribute>
+		<composite:attribute name="nick"></composite:attribute>
+		<composite:attribute name="name"></composite:attribute>
+		<composite:attribute name="password"></composite:attribute>
+		<composite:attribute name="telephone"></composite:attribute>
+		<composite:attribute name="address"></composite:attribute>
+		<composite:attribute name="email"></composite:attribute>
+		<composite:attribute name="bean" type="src.jsfcompslib.util.interfaces.IProcessable"></composite:attribute>
+
+
+		<composite:attribute name="label_id"  default="Id"></composite:attribute>
+		<composite:attribute name="label_nick"  default="Nick"></composite:attribute>
+		<composite:attribute name="label_name"  default="Name"></composite:attribute>
+		<composite:attribute name="label_password"  default="Password"></composite:attribute>
+		<composite:attribute name="label_telephone"  default="Telephone"></composite:attribute>
+		<composite:attribute name="label_address"  default="Address"></composite:attribute>
+		<composite:attribute name="label_email"  default="Email"></composite:attribute>
+		
+		<composite:attribute name="msg_required_nick"></composite:attribute>
+		<composite:attribute name="msg_required_name"></composite:attribute>
+		<composite:attribute name="msg_required_password"></composite:attribute>
+		<composite:attribute name="msg_required_telephone"></composite:attribute>
+		<composite:attribute name="msg_required_address"></composite:attribute>
+		<composite:attribute name="msg_required_email"></composite:attribute>
+		
+		<composite:attribute name="b_required_nick"></composite:attribute>
+		<composite:attribute name="b_required_name"></composite:attribute>
+		<composite:attribute name="b_required_password"></composite:attribute>
+		<composite:attribute name="b_required_telephone"></composite:attribute>
+		<composite:attribute name="b_required_address"></composite:attribute>
+		<composite:attribute name="b_required_email"></composite:attribute>
+		
+		<composite:attribute name="button_text_create_user" default="Create User"></composite:attribute>
+		<composite:attribute name="button_text_update_user" default="Update User"></composite:attribute>
+
+	</composite:interface>
+	<composite:implementation>
+	
+	
+		<p:form>
+
+		<p:panelGrid columns="2">
+
+			<p:outputLabel
+				value="#{cc.attrs.label_id}"></p:outputLabel>
+			<p:inputText  immediate="true"
+				maxlength="10" readonly="true" value="#{cc.attrs.user_id}"></p:inputText>
+
+			<p:outputLabel
+				value="#{cc.attrs.label_name}"></p:outputLabel>
+			<p:inputText  immediate="true"
+				maxlength="40" required="true"
+				requiredMessage="#{cc.attrs.msg_required_name}"
+				value="#{cc.attrs.name}"></p:inputText>
+			<p:outputLabel
+				value="#{cc.attrs.label_nick}"></p:outputLabel>
+			<p:inputText  immediate="true"
+				maxlength="40" required="true"
+				requiredMessage="#{cc.attrs.msg_required_nick}"
+				value="#{cc.attrs.nick}"></p:inputText>
+			<p:outputLabel
+				value="#{cc.attrs.label_email}"></p:outputLabel>
+			<p:inputText  immediate="true"
+				maxlength="40" required="true"
+				requiredMessage="#{cc.attrs.msg_required_email}"
+				value="#{cc.attrs.email}"></p:inputText>
+			<p:outputLabel
+				value="#{cc.attrs.label_password}"></p:outputLabel>
+			<p:inputText  immediate="true"
+				maxlength="40" required="true"
+				requiredMessage="#{cc.attrs.msg_required_password}"
+				value="#{cc.attrs.password}"></p:inputText>
+
+			<p:outputLabel
+				value="#{cc.attrs.label_address}"></p:outputLabel>
+			<p:inputText  immediate="true"
+				maxlength="100" required="true"
+				requiredMessage="#{cc.attrs.msg_required_address}"
+				value="#{cc.attrs.address}"></p:inputText>
+			<p:outputLabel
+				value="#{cc.attrs.label_telephone}"></p:outputLabel>
+			<p:inputText  immediate="true"
+				maxlength="20" required="true"
+				requiredMessage="#{cc.attrs.msg_required_telephone}"
+				value="#{cc.attrs.telephone}"></p:inputText>
+				
+		</p:panelGrid>		
+		
+		<p:commandButton 
+			value="#{cc.attrs.button_text_create_user}"
+			action="#{cc.attrs.bean.createNew()}"></p:commandButton>
+		<p:commandButton 
+			value="#{cc.attrs.button_text_update_user}"
+			action="#{cc.attrs.bean.updateUser()}"></p:commandButton>
+			
+			
+	</p:form>
+	
+	
+	</composite:implementation>
+
+
+
+
+</body>
+</html>
+
+<!-- 
+	<comp:UserControl
+	user_id="#{bean.user.id}"
+	nick="#{bean.user.nick}"
+	name="#{bean.user.name}"
+	password="#{bean.user.password}"
+	telephone="#{bean.user.telephone}"
+	address="#{bean.user.address}"
+	email="#{bean.user.email}"
+	bean="#{bean}"
+	
+	b_required_nick="true"
+	b_required_name="true"
+	b_required_password="true"
+	b_required_telephone="true"
+	b_required_address="true"
+	b_required_email="true"
+	
+	label_id="#{generalLocalizationHelper.getString('user_management_id')}"
+	label_nick="#{generalLocalizationHelper.getString('user_management_nick')}"
+	label_name="#{generalLocalizationHelper.getString('user_management_name')}"
+	label_password="#{generalLocalizationHelper.getString('user_management_password')}"
+	label_telephone="#{generalLocalizationHelper.getString('user_management_telephone')}"
+	label_address="#{generalLocalizationHelper.getString('user_management_address')}"
+	label_email="#{generalLocalizationHelper.getString('user_management_email')}"
+	
+	msg_required_nick="#{generalLocalizationHelper.getString('user_management_nick_required_msg')}"
+	msg_required_name="#{generalLocalizationHelper.getString('user_management_name_required_msg')}"
+	msg_required_password="#{generalLocalizationHelper.getString('user_management_password_required_msg')}"
+	msg_required_telephone="#{generalLocalizationHelper.getString('user_management_telephone_required_msg')}"
+	msg_required_address="#{generalLocalizationHelper.getString('user_management_address_required_msg')}"
+	msg_required_email="#{generalLocalizationHelper.getString('user_management_email_required_msg')}"
+	
+	button_text_create_user="#{generalLocalizationHelper.getString('user_management_buttontext_crear_user')}"
+	button_text_update_user="#{generalLocalizationHelper.getString('user_management_buttontext_actualizar_user')}"	
+	>
+	</comp:UserControl>
+	
+	 -->
