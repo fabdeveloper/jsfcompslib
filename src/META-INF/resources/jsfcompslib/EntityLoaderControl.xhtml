@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:composite="http://java.sun.com/jsf/composite"
+xmlns:c="http://java.sun.com/jsf/core"
+xmlns:ui="http://primefaces.org/ui"
+xmlns:p="http://java.sun.com/jsf/html">
+
+<p:body>
+	<composite:interface>
+<composite:attribute name="dataTableClass" default="dataTableClass"></composite:attribute>
+<composite:attribute name="inputTextClass" default="inputTextClass"></composite:attribute>
+<composite:attribute name="commandButtonClass" default="commandButtonClass"></composite:attribute>
+<composite:attribute name="entitytable" default="entitytable:"></composite:attribute>
+<composite:attribute name="entitytableField"></composite:attribute>
+<composite:attribute name="entitytableRendered" type="java.lang.Boolean" default="true"></composite:attribute>
+<composite:attribute name="entitytableDisabled" type="java.lang.Boolean" default="false"></composite:attribute>
+<composite:attribute name="entitytableList" type="java.util.List"></composite:attribute>
+<composite:attribute name="entitytableListaColumnas"  type="java.util.List"></composite:attribute>
+<composite:attribute name="entitytable_bScrollable"  type="java.lang.Boolean" default="true"></composite:attribute>
+<composite:attribute name="entitytableSelectionMode" default="single"></composite:attribute>
+<composite:attribute name="entitytableProcRowSelectListener"  method-signature="java.lang.String rowSelectListener()"></composite:attribute>
+<composite:attribute name="inputfilename" default="inputfilename:"></composite:attribute>
+<composite:attribute name="inputfilenameField"></composite:attribute>
+<composite:attribute name="inputfilenameRendered" type="java.lang.Boolean" default="true"></composite:attribute>
+<composite:attribute name="inputfilenameDisabled" type="java.lang.Boolean" default="false"></composite:attribute>
+<composite:attribute name="inputsheetname" default="inputsheetname:"></composite:attribute>
+<composite:attribute name="inputsheetnameField"></composite:attribute>
+<composite:attribute name="inputsheetnameRendered" type="java.lang.Boolean" default="true"></composite:attribute>
+<composite:attribute name="inputsheetnameDisabled" type="java.lang.Boolean" default="false"></composite:attribute>
+<composite:attribute name="actionloadfile" default="actionloadfile"></composite:attribute>
+<composite:attribute name="actionloadfileField" method-signature="java.lang.String actionloadfileField()"></composite:attribute>
+<composite:attribute name="actionloadfileRendered" type="java.lang.Boolean" default="true"></composite:attribute>
+<composite:attribute name="actionloadfileDisabled" type="java.lang.Boolean" default="false"></composite:attribute>
+<composite:attribute name="inputparentselected" default="inputparentselected:"></composite:attribute>
+<composite:attribute name="inputparentselectedField"></composite:attribute>
+<composite:attribute name="inputparentselectedRendered" type="java.lang.Boolean" default="true"></composite:attribute>
+<composite:attribute name="inputparentselectedDisabled" type="java.lang.Boolean" default="false"></composite:attribute>
+<composite:attribute name="actionbindtoparent" default="actionbindtoparent"></composite:attribute>
+<composite:attribute name="actionbindtoparentField" method-signature="java.lang.String actionbindtoparentField()"></composite:attribute>
+<composite:attribute name="actionbindtoparentRendered" type="java.lang.Boolean" default="true"></composite:attribute>
+<composite:attribute name="actionbindtoparentDisabled" type="java.lang.Boolean" default="false"></composite:attribute>
+<composite:attribute name="actioncreateall" default="actioncreateall"></composite:attribute>
+<composite:attribute name="actioncreateallField" method-signature="java.lang.String actioncreateallField()"></composite:attribute>
+<composite:attribute name="actioncreateallRendered" type="java.lang.Boolean" default="true"></composite:attribute>
+<composite:attribute name="actioncreateallDisabled" type="java.lang.Boolean" default="false"></composite:attribute>
+<composite:attribute name="actionloadfromdb" default="actionloadfromdb"></composite:attribute>
+<composite:attribute name="actionloadfromdbField" method-signature="java.lang.String actionloadfromdbField()"></composite:attribute>
+<composite:attribute name="actionloadfromdbRendered" type="java.lang.Boolean" default="true"></composite:attribute>
+<composite:attribute name="actionloadfromdbDisabled" type="java.lang.Boolean" default="false"></composite:attribute>
+	</composite:interface>
+	
+	<composite:implementation>
+		<p:panelGrid border="1" columns="2">
+	
+			<div>
+				<p:outputText value="#{cc.attrs.entitytable}" rendered="#{cc.attrs.entitytableRendered}"></p:outputText>
+				<br />
+				<ui:dataTable  value="#{cc.attrs.entitytableList}" var="registro" scrollable="#{cc.attrs.entitytable_bScrollable}" selectionMode="#{cc.attrs.entitytableSelectionMode}" selection="#{cc.attrs.entitytableField}" rowKey="#{registro.id}">
+					<ui:columns value="#{cc.attrs.entitytableListaColumnas}" var="column" headerText="#{column.header}">
+						<p:outputText value="#{registro[column.property]}" />
+					</ui:columns>
+					<ui:ajax event="rowSelect" listener="#{cc.attrs.entitytableProcRowSelectListener}"/>
+				</ui:dataTable>
+			</div>
+	
+			<div>
+				<p:panelGrid border="1" columns="2">
+				
+					<p:outputText value="#{cc.attrs.inputfilename}" rendered="#{cc.attrs.inputfilenameRendered}"></p:outputText>
+					<p:inputText class="#{cc.attrs.inputTextClass}" value="#{cc.attrs.inputfilenameField}" disabled="#{cc.attrs.inputfilenameDisabled}" rendered="#{cc.attrs.inputfilenameRendered}"></p:inputText>
+					<p:outputText value="#{cc.attrs.inputsheetname}" rendered="#{cc.attrs.inputsheetnameRendered}"></p:outputText>
+					<p:inputText class="#{cc.attrs.inputTextClass}" value="#{cc.attrs.inputsheetnameField}" disabled="#{cc.attrs.inputsheetnameDisabled}" rendered="#{cc.attrs.inputsheetnameRendered}"></p:inputText>
+					<br />
+					<p:commandButton class="#{cc.attrs.commandButtonClass}" value="#{cc.attrs.actionloadfile}" action="#{cc.attrs.actionloadfileField}" disabled="#{cc.attrs.actionloadfileDisabled}" rendered="#{cc.attrs.actionloadfileRendered}"></p:commandButton>
+					<p:outputText value="#{cc.attrs.inputparentselected}" rendered="#{cc.attrs.inputparentselectedRendered}"></p:outputText>
+					<p:inputText class="#{cc.attrs.inputTextClass}" value="#{cc.attrs.inputparentselectedField}" disabled="#{cc.attrs.inputparentselectedDisabled}" rendered="#{cc.attrs.inputparentselectedRendered}"></p:inputText>
+					<p:commandButton class="#{cc.attrs.commandButtonClass}" value="#{cc.attrs.actionbindtoparent}" action="#{cc.attrs.actionbindtoparentField}" disabled="#{cc.attrs.actionbindtoparentDisabled}" rendered="#{cc.attrs.actionbindtoparentRendered}"></p:commandButton>
+					<p:commandButton class="#{cc.attrs.commandButtonClass}" value="#{cc.attrs.actioncreateall}" action="#{cc.attrs.actioncreateallField}" disabled="#{cc.attrs.actioncreateallDisabled}" rendered="#{cc.attrs.actioncreateallRendered}"></p:commandButton>
+					<p:commandButton class="#{cc.attrs.commandButtonClass}" value="#{cc.attrs.actionloadfromdb}" action="#{cc.attrs.actionloadfromdbField}" disabled="#{cc.attrs.actionloadfromdbDisabled}" rendered="#{cc.attrs.actionloadfromdbRendered}"></p:commandButton>
+	
+				</p:panelGrid>
+			</div>
+			
+		</p:panelGrid>
+		
+	</composite:implementation>
+</p:body>
+</html>
+<!-- 
+dataTableClass=""
+inputTextClass=""
+commandButtonClass=""
+entitytable=""
+entitytableField=""
+entitytableDisabled=""
+entitytableRendered=""
+entitytableList=""
+entitytableListaColumnas=""
+entitytable_bScrollable=""
+entitytableSelectionMode=""
+entitytableProcRowSelectListener=""
+inputfilename=""
+inputfilenameField=""
+inputfilenameDisabled=""
+inputfilenameRendered=""
+inputsheetname=""
+inputsheetnameField=""
+inputsheetnameDisabled=""
+inputsheetnameRendered=""
+actionloadfile=""
+actionloadfileField=""
+actionloadfileDisabled=""
+actionloadfileRendered=""
+inputparentselected=""
+inputparentselectedField=""
+inputparentselectedDisabled=""
+inputparentselectedRendered=""
+actionbindtoparent=""
+actionbindtoparentField=""
+actionbindtoparentDisabled=""
+actionbindtoparentRendered=""
+actioncreateall=""
+actioncreateallField=""
+actioncreateallDisabled=""
+actioncreateallRendered=""
+actionloadfromdb=""
+actionloadfromdbField=""
+actionloadfromdbDisabled=""
+actionloadfromdbRendered=""
+ -->
